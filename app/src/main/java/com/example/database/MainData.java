@@ -22,13 +22,22 @@ public class MainData implements Serializable {
 
     private String name;
 
-    public MainData(String text, String name) {
+    private String style;
+
+    private String volume;
+    private String brewed;
+    private String best;
+
+    public MainData(String text, String name,String style,String volume,String brewed,String best) {
         this.text = text;
         this.name = name;
+        this.style = style;
+        this.volume = volume;
+        this.brewed = brewed;
+        this.best = best;
     }
 
 //Getter and Setter
-
 
     public int getID() {
         return ID;
@@ -52,5 +61,37 @@ public class MainData implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getVolume() {
+        return volume;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    public String getBrewed() {
+        return brewed;
+    }
+
+    public void setBrewed(String brewed) {
+        this.brewed = brewed;
+    }
+
+    public String getBest() {
+        return best;
+    }
+
+    public void setBest(String best) {
+        this.best = best;
     }
 }

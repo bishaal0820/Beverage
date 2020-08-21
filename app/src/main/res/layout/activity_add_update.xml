@@ -7,6 +7,23 @@
     android:orientation="vertical"
     tools:context=".AddUpdate">
 
+    <ImageView
+        android:id="@+id/capturedImage"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_above="@+id/btnTakePicture"
+        android:background="#FFFFFF"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <Button
+        android:id="@+id/btnTakePicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Take a Photo"
+        android:textStyle="bold" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,5 +37,33 @@
         android:id="@+id/edit_name"
         android:hint="Enter Name"
         android:background="@android:drawable/editbox_background"/>
+
+    <EditText
+        android:id="@+id/etStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Style"
+        android:background="@android:drawable/editbox_background" />
+
+    <EditText
+        android:id="@+id/etVolume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Volume"
+        android:background="@android:drawable/editbox_background" />
+
+    <EditText
+        android:id="@+id/etBrewed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Brewed"
+        android:background="@android:drawable/editbox_background" />
+
+    <EditText
+        android:id="@+id/etBestBefore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Best Before"
+        android:background="@android:drawable/editbox_background" />
 
 </LinearLayout>
