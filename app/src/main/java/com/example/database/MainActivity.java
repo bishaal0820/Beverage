@@ -106,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(AddUpdate.EXTRA_ID,mainData.getID());
                 intent.putExtra(AddUpdate.EXTRA_TEXT,mainData.getText());
                 intent.putExtra(AddUpdate.EXTRA_NAME,mainData.getName());
+                intent.putExtra(AddUpdate.EXTRA_STYLE,mainData.getStyle());
+                intent.putExtra(AddUpdate.EXTRA_VOLUME,mainData.getVolume());
+                intent.putExtra(AddUpdate.EXTRA_BREWED,mainData.getBrewed());
+                intent.putExtra(AddUpdate.EXTRA_BEST,mainData.getBest());
                 startActivityForResult(intent,EDIT_NOTE_REQUEST);
             }
         });
@@ -121,9 +125,13 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1 && resultCode == RESULT_OK) {
             String sText = data.getStringExtra(AddUpdate.EXTRA_TEXT);
             String sName = data.getStringExtra(AddUpdate.EXTRA_NAME);
+            String sStyle = data.getStringExtra(AddUpdate.EXTRA_STYLE);
+            String sVolume = data.getStringExtra(AddUpdate.EXTRA_VOLUME);
+            String sBrewed = data.getStringExtra(AddUpdate.EXTRA_BREWED);
+            String sBest = data.getStringExtra(AddUpdate.EXTRA_BEST);
 
             //Initialize main data
-            MainData mainData = new MainData(sText, sName);
+            MainData mainData = new MainData(sText, sName,sStyle,sVolume,sBrewed,sBest);
             //Insert text in database
             database.mainDao().insert(mainData);
             //view();
@@ -145,9 +153,13 @@ public class MainActivity extends AppCompatActivity {
 
             String sText = data.getStringExtra(AddUpdate.EXTRA_TEXT);
             String sName = data.getStringExtra(AddUpdate.EXTRA_NAME);
+            String sStyle = data.getStringExtra(AddUpdate.EXTRA_STYLE);
+            String sVolume = data.getStringExtra(AddUpdate.EXTRA_VOLUME);
+            String sBrewed = data.getStringExtra(AddUpdate.EXTRA_BREWED);
+            String sBest = data.getStringExtra(AddUpdate.EXTRA_BEST);
 
             //Initialize main data
-            MainData mainData = new MainData(sText, sName);
+            MainData mainData = new MainData(sText, sName,sStyle,sVolume,sBrewed,sBest);
             mainData.setID(id);
 
             //Insert text in database

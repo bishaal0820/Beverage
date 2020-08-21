@@ -21,9 +21,13 @@ public class AddUpdate extends AppCompatActivity {
     public static final String EXTRA_ID = "com.example.database.EXTRA_ID";
     public static final String EXTRA_TEXT = "com.example.database.EXTRA_TEXT";
     public static final String EXTRA_NAME = "com.example.database.EXTRA_NAME";
+    public static final String EXTRA_STYLE = "com.example.database.EXTRA_STYLE";
+    public static final String EXTRA_VOLUME = "com.example.database.EXTRA_VOLUME";
+    public static final String EXTRA_BREWED = "com.example.database.EXTRA_BREWED";
+    public static final String EXTRA_BEST = "com.example.database.EXTRA_BEST";
 
 
-    EditText editText,editName;
+    EditText editText,editName,eStyle,eVolume,eBrewed,eBest;
     List<MainData> dataList = new ArrayList<>();
     RoomDB database;
     MainAdapter adapter;
@@ -35,6 +39,10 @@ public class AddUpdate extends AppCompatActivity {
 
         editText = findViewById(R.id.edit_text);
         editName = findViewById(R.id.edit_name);
+        eStyle = findViewById(R.id.etStyle);
+        eVolume = findViewById(R.id.etVolume);
+        eBrewed = findViewById(R.id.etBrewed);
+        eBest = findViewById(R.id.etBestBefore);
 
         Intent intent = getIntent();
 
@@ -43,6 +51,10 @@ public class AddUpdate extends AppCompatActivity {
             setTitle("Edit Note");
             editText.setText(intent.getStringExtra(EXTRA_TEXT));
             editName.setText(intent.getStringExtra(EXTRA_NAME));
+            eStyle.setText(intent.getStringExtra(EXTRA_STYLE));
+            eVolume.setText(intent.getStringExtra(EXTRA_VOLUME));
+            eBrewed.setText(intent.getStringExtra(EXTRA_BREWED));
+            eBest.setText(intent.getStringExtra(EXTRA_BEST));
 
         } else {
             setTitle("Add Note"); }
@@ -58,9 +70,14 @@ public class AddUpdate extends AppCompatActivity {
     {
         String text=editText.getText().toString();
         String name=editName.getText().toString();
+        String style=eStyle.getText().toString();
+        String volume=eVolume.getText().toString();
+        String brewed=eBrewed.getText().toString();
+        String best=eBest.getText().toString();
 
 
-        if (text.trim().isEmpty()||name.trim().isEmpty()){
+
+        if (text.trim().isEmpty()||name.trim().isEmpty()||style.trim().isEmpty()||volume.trim().isEmpty()||brewed.trim().isEmpty()||best.trim().isEmpty()){
             Toast.makeText(this,"Please insert an text and Name",Toast.LENGTH_SHORT).show();
             return;
         }
@@ -69,6 +86,11 @@ public class AddUpdate extends AppCompatActivity {
         Intent data = new Intent();
         data.putExtra(EXTRA_TEXT,text);
         data.putExtra(EXTRA_NAME,name);
+        data.putExtra(EXTRA_STYLE,style);
+        data.putExtra(EXTRA_VOLUME,volume);
+        data.putExtra(EXTRA_BREWED,brewed);
+        data.putExtra(EXTRA_BEST,best);
+
 
         int id =getIntent().getIntExtra(EXTRA_ID,-1);
 

@@ -55,6 +55,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         //set text on text view
         holder.textView.setText(data.getText());
         holder.NameView.setText(data.getName());
+        holder.StyleView.setText(data.getStyle());
+        holder.VolumeView.setText(data.getVolume());
+        holder.BrewedView.setText(data.getBrewed());
+        holder.BestView.setText(data.getBest());
 
         holder.btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +84,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         //Initialize variables
-        TextView textView, NameView;
+        TextView textView, NameView,StyleView,VolumeView,BrewedView,BestView;
         ImageView btEdit, btDelete;
 
         public ViewHolder(@NonNull View itemView) {
@@ -89,6 +93,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             //Assign variable
             textView = itemView.findViewById(R.id.text_view);
             NameView = itemView.findViewById(R.id.name_view);
+            StyleView = itemView.findViewById(R.id.style_view);
+            VolumeView = itemView.findViewById(R.id.volume_view);
+            BrewedView = itemView.findViewById(R.id.brewed_view);
+            BestView = itemView.findViewById(R.id.best_view);
             btDelete = itemView.findViewById(R.id.bt_delete);
 
             itemView.setOnClickListener(new View.OnClickListener() {
