@@ -59,6 +59,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.VolumeView.setText(data.getVolume());
         holder.BrewedView.setText(data.getBrewed());
         holder.BestView.setText(data.getBest());
+        //holder.IView.setImageBitmap(DataConverter.convertByteArrayToImage(data.getImage()));
 
         holder.btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +86,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         //Initialize variables
         TextView textView, NameView,StyleView,VolumeView,BrewedView,BestView;
-        ImageView btEdit, btDelete;
+        ImageView IView, btDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -98,6 +99,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             BrewedView = itemView.findViewById(R.id.brewed_view);
             BestView = itemView.findViewById(R.id.best_view);
             btDelete = itemView.findViewById(R.id.bt_delete);
+            //IView = itemView.findViewById(R.id.image_taken);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

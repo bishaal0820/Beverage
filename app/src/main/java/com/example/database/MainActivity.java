@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(AddUpdate.EXTRA_VOLUME,mainData.getVolume());
                 intent.putExtra(AddUpdate.EXTRA_BREWED,mainData.getBrewed());
                 intent.putExtra(AddUpdate.EXTRA_BEST,mainData.getBest());
+                //intent.putExtra(AddUpdate.EXTRA_ARRAY,mainData.getImage());
                 startActivityForResult(intent,EDIT_NOTE_REQUEST);
             }
         });
@@ -129,9 +130,11 @@ public class MainActivity extends AppCompatActivity {
             String sVolume = data.getStringExtra(AddUpdate.EXTRA_VOLUME);
             String sBrewed = data.getStringExtra(AddUpdate.EXTRA_BREWED);
             String sBest = data.getStringExtra(AddUpdate.EXTRA_BEST);
+            //byte [] sImage = data.getByteArrayExtra(AddUpdate.EXTRA_ARRAY);
+
 
             //Initialize main data
-            MainData mainData = new MainData(sText, sName,sStyle,sVolume,sBrewed,sBest);
+            MainData mainData = new MainData(sText, sName,sStyle,sVolume,sBrewed,sBest/*,sImage*/);
             //Insert text in database
             database.mainDao().insert(mainData);
             //view();
@@ -157,9 +160,10 @@ public class MainActivity extends AppCompatActivity {
             String sVolume = data.getStringExtra(AddUpdate.EXTRA_VOLUME);
             String sBrewed = data.getStringExtra(AddUpdate.EXTRA_BREWED);
             String sBest = data.getStringExtra(AddUpdate.EXTRA_BEST);
+           // byte [] sImage = data.getByteArrayExtra(AddUpdate.EXTRA_ARRAY);
 
             //Initialize main data
-            MainData mainData = new MainData(sText, sName,sStyle,sVolume,sBrewed,sBest);
+            MainData mainData = new MainData(sText, sName,sStyle,sVolume,sBrewed,sBest/*,sImage*/);
             mainData.setID(id);
 
             //Insert text in database

@@ -6,6 +6,7 @@ package com.example.database;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.util.TableInfo;
 
 import java.io.Serializable;
 
@@ -19,22 +20,22 @@ public class MainData implements Serializable {
     //Create text column
     @ColumnInfo(name="text")
     private String text;
-
     private String name;
-
     private String style;
-
     private String volume;
     private String brewed;
     private String best;
+    ////@ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    byte[] image;
 
-    public MainData(String text, String name,String style,String volume,String brewed,String best) {
+    public MainData(String text, String name,String style,String volume,String brewed,String best/*,byte[] image*/) {
         this.text = text;
         this.name = name;
         this.style = style;
         this.volume = volume;
         this.brewed = brewed;
         this.best = best;
+       // this.image=image;
     }
 
 //Getter and Setter
@@ -94,4 +95,12 @@ public class MainData implements Serializable {
     public void setBest(String best) {
         this.best = best;
     }
+
+   /* public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }*/
 }
