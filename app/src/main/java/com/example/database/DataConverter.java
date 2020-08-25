@@ -3,16 +3,22 @@ package com.example.database;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import androidx.room.TypeConverter;
+
 import java.io.ByteArrayOutputStream;
+import java.util.Date;
 
 public class DataConverter {
-    public static byte [] convertImageToByteArray(Bitmap bitmap){
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,0,stream);
-        return stream.toByteArray();
-    }
+@TypeConverter
+    public static Long toTime(Date date)
+{
+    return date==null? null: date.getTime();
+}
 
-    public static Bitmap convertByteArrayToImage(byte[] array){
-        return BitmapFactory.decodeByteArray(array,0,array.length);
-    }
+@TypeConverter
+    public static Date toDate(Long timestamp)
+{
+    return timestamp==null? null: new Date(timestamp);
+}
+
 }

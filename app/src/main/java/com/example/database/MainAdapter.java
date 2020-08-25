@@ -2,6 +2,8 @@ package com.example.database;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,16 +54,18 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         final MainData data = dataList.get(position);
         //Initialize database
         database = RoomDB.getInstance(context);
+
+        Bitmap bitmap = BitmapFactory.decodeFile(data.getBest());
         //set text on text view
         holder.textView.setText(data.getText());
         holder.NameView.setText(data.getName());
         holder.StyleView.setText(data.getStyle());
         holder.VolumeView.setText(data.getVolume());
         holder.BrewedView.setText(data.getBrewed());
-        holder.BestView.setText(data.getBest());
-        //holder.IView.setImageBitmap(DataConverter.convertByteArrayToImage(data.getImage()));
+        holder.BestView.setText(data.getExpdate());
+        holder.IView.setImageBitmap(bitmap);
 
-        holder.btDelete.setOnClickListener(new View.OnClickListener() {
+/*        holder.btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Initialize main data
@@ -74,7 +78,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, dataList.size());
             }
-        });
+        });*/
 
     }
 
@@ -98,8 +102,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             VolumeView = itemView.findViewById(R.id.volume_view);
             BrewedView = itemView.findViewById(R.id.brewed_view);
             BestView = itemView.findViewById(R.id.best_view);
-            btDelete = itemView.findViewById(R.id.bt_delete);
-            //IView = itemView.findViewById(R.id.image_taken);
+            //btDelete = itemView.findViewById(R.id.bt_delete);
+            IView = itemView.findViewById(R.id.image_taken);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {

@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey;
 import androidx.room.util.TableInfo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity(tableName = "table_name")
 public class MainData implements Serializable {
@@ -25,17 +26,18 @@ public class MainData implements Serializable {
     private String volume;
     private String brewed;
     private String best;
-    ////@ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    byte[] image;
+    private String expdate;
 
-    public MainData(String text, String name,String style,String volume,String brewed,String best/*,byte[] image*/) {
+
+
+    public MainData(String text, String name,String style,String volume,String brewed,String best,String expdate) {
         this.text = text;
         this.name = name;
         this.style = style;
         this.volume = volume;
         this.brewed = brewed;
         this.best = best;
-       // this.image=image;
+        this.expdate=expdate;
     }
 
 //Getter and Setter
@@ -96,11 +98,11 @@ public class MainData implements Serializable {
         this.best = best;
     }
 
-   /* public byte[] getImage() {
-        return image;
+    public String getExpdate() {
+        return expdate;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
-    }*/
+    public void setExpdate(String expdate) {
+        this.expdate = expdate;
+    }
 }

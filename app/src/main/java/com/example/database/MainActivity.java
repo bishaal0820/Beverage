@@ -23,7 +23,10 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -110,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(AddUpdate.EXTRA_VOLUME,mainData.getVolume());
                 intent.putExtra(AddUpdate.EXTRA_BREWED,mainData.getBrewed());
                 intent.putExtra(AddUpdate.EXTRA_BEST,mainData.getBest());
+                intent.putExtra(AddUpdate.EXTRA_EXPDATE,String.valueOf(mainData.getExpdate()));
                 //intent.putExtra(AddUpdate.EXTRA_ARRAY,mainData.getImage());
                 startActivityForResult(intent,EDIT_NOTE_REQUEST);
             }
@@ -130,11 +134,10 @@ public class MainActivity extends AppCompatActivity {
             String sVolume = data.getStringExtra(AddUpdate.EXTRA_VOLUME);
             String sBrewed = data.getStringExtra(AddUpdate.EXTRA_BREWED);
             String sBest = data.getStringExtra(AddUpdate.EXTRA_BEST);
-            //byte [] sImage = data.getByteArrayExtra(AddUpdate.EXTRA_ARRAY);
-
+            String sExpdate = data.getStringExtra(AddUpdate.EXTRA_EXPDATE);
 
             //Initialize main data
-            MainData mainData = new MainData(sText, sName,sStyle,sVolume,sBrewed,sBest/*,sImage*/);
+            MainData mainData = new MainData(sText, sName,sStyle,sVolume,sBrewed,sBest,sExpdate);
             //Insert text in database
             database.mainDao().insert(mainData);
             //view();
@@ -160,10 +163,10 @@ public class MainActivity extends AppCompatActivity {
             String sVolume = data.getStringExtra(AddUpdate.EXTRA_VOLUME);
             String sBrewed = data.getStringExtra(AddUpdate.EXTRA_BREWED);
             String sBest = data.getStringExtra(AddUpdate.EXTRA_BEST);
-           // byte [] sImage = data.getByteArrayExtra(AddUpdate.EXTRA_ARRAY);
+            String sExpdate = data.getStringExtra(AddUpdate.EXTRA_EXPDATE);
 
             //Initialize main data
-            MainData mainData = new MainData(sText, sName,sStyle,sVolume,sBrewed,sBest/*,sImage*/);
+            MainData mainData = new MainData(sText, sName,sStyle,sVolume,sBrewed,sBest,sExpdate);
             mainData.setID(id);
 
             //Insert text in database
@@ -175,9 +178,6 @@ public class MainActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
 
             Toast.makeText(this, "Note Saved", Toast.LENGTH_SHORT).show();
-
-
-
         }
         else {
             Toast.makeText(this, "Note Not Saved", Toast.LENGTH_SHORT).show();
