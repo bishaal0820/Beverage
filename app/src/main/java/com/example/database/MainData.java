@@ -6,10 +6,8 @@ package com.example.database;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.util.TableInfo;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity(tableName = "table_name")
 public class MainData implements Serializable {

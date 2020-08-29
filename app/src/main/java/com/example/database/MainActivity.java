@@ -1,13 +1,5 @@
 package com.example.database;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.RoomDatabase;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -18,15 +10,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     RoomDB database;
     MainAdapter adapter;
+    private FirebaseAuth Fauth;
     private Activity context;
 
 
@@ -45,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Fauth= FirebaseAuth.getInstance();
 
         //Adding the close button on the menu
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
@@ -184,6 +183,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void Logout()
+    {
+        Fauth.signOut();
+        finish();
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -203,6 +209,9 @@ public class MainActivity extends AppCompatActivity {
                 dataList.addAll(database.mainDao().getAll());
                 adapter.notifyDataSetChanged();
                 Toast.makeText(this, "All notes deleted", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.logout_menu:
+                Logout();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
