@@ -8,45 +8,52 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.util.Date;
 
-@Entity(tableName = "table_name")
-public class MainData implements Serializable {
+
+public class MainData {
     //Create Primary Key column
 
-    @PrimaryKey(autoGenerate = true)
-    private int ID;
+    //@PrimaryKey(autoGenerate = true)
+    //private int ID;
 
     //Create text column
-    @ColumnInfo(name="text")
+   // @ColumnInfo(name="text")
     private String text;
     private String name;
     private String style;
-    private String volume;
+    private int volume;
     private String brewed;
     private String best;
     private String expdate;
+    private String brewery;
+
+    public MainData()
+    {
+
+    }
 
 
-
-    public MainData(String text, String name,String style,String volume,String brewed,String best,String expdate) {
+    public MainData(String best,String brewed,String brewery, String expdate,String name,String style,String text,int volume) {
         this.text = text;
         this.name = name;
         this.style = style;
         this.volume = volume;
         this.brewed = brewed;
         this.best = best;
+        this.brewery = brewery;
         this.expdate=expdate;
     }
 
 //Getter and Setter
 
-    public int getID() {
-        return ID;
-    }
+    //public int getID() {
+      //  return ID;
+    //}
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+    //public void setID(int ID) {
+      //  this.ID = ID;
+    //}
 
     public String getText() {
         return text;
@@ -72,11 +79,11 @@ public class MainData implements Serializable {
         this.style = style;
     }
 
-    public String getVolume() {
+    public int getVolume() {
         return volume;
     }
 
-    public void setVolume(String volume) {
+    public void setVolume(int volume) {
         this.volume = volume;
     }
 
@@ -102,5 +109,13 @@ public class MainData implements Serializable {
 
     public void setExpdate(String expdate) {
         this.expdate = expdate;
+    }
+
+    public String getBrewery() {
+        return brewery;
+    }
+
+    public void setBrewery(String brewery) {
+        this.brewery = brewery;
     }
 }
